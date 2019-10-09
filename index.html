@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>City of Gainesville</title>
+    <link href="./main.css" rel="stylesheet" />
+    <link href="./css/all.css" rel="stylesheet">
+    <!--<script src="https://kit.fontawesome.com/114229a8c4.js"></script>-->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    <script defer src="./js//all.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+  	<script src="jquery/js/jquery-1.9.0.min.js"></script>
+    <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <main>
+    	<div id="screensaver">
+    		<div id="alert">
+    			<strong>Announcement: </strong>School is closed<br>
+    			<strong>Next Meeting Today: </strong>Utility Advisory Board Meeting at  5:30 PM
+    		</div>
+    		<h1>
+    			How can the City help you?
+    		</h1>
+    		<div id="dynamic-panel" class="outer-container">
+	    		<div id="button-container-left" class="button-container">
+					<button id="prev">
+						<i class="fal fa-chevron-left" id="prevIcon" style="display: block; margin: 0px;color: #f5f6f7; font-size: 7em; visibility: visible;"></i>
+					</button>
+				</div>
+
+			  	<div class="container">
+			  		
+		  			<div class="tile" id="tile1">
+		  				<button class="button-text btn btn-light" id="button1" type="button">
+		  					<i id="icon1" class="fal fa-hand-holding" style="display: block; font-size: 4em; margin: 10px;"></i>
+		  					<p id="p1" style="display: none; color: #007bff">Coming soon!</p>
+		  					<div id="text1" class="text">
+								Tell us how our service was today!
+							</div>
+						</button>
+		  			</div>
+					<div class="tile" id="tile2">
+						<button class="button-text btn btn-light" id="button2" type="button">
+							<i id="icon2" class="fal fa-calendar-alt" style="display: block; font-size: 4em; margin: 10px;"></i>
+							<p id="p2" style="display: none; color: #007bff">Coming soon!</p>
+							<div id="text2" class="text">
+								Calendar
+							</div>
+						</button>
+					</div>
+					<div class="tile" id="tile3">
+						<button class="button-text btn btn-light" id="button3" type="button">
+							<i id="icon3" class="fal fa-map-marked-alt" style="display: block; font-size: 4em; margin: 10px;"></i>
+							<p id="p3" style="display: none; color: #007bff">Coming soon!</p>
+							<div id="text3" class="text">
+								Map of City Services
+							</div>
+						</button>
+					</div>
+					<div class="tile" id="tile4">
+						<button class="button-text btn btn-light" id="button4" type="button">
+							<i id="icon4" class="fal fa-comments" style="display: block; font-size: 4em; margin: 10px;"></i>
+							<p id="p4" style="display: none; color: #007bff">Coming soon!</p>
+							<div id="text4" class="text">
+								Share your thoughts with the City!
+							</div>
+						</button>
+					</div>
+				</div>
+
+				<div id="button-container-right" class="button-container">
+					<button id="next">
+						<i class="fal fa-chevron-right" id="nextIcon" style="display: block; margin: 0px;color: #f5f6f7; font-size: 7em; visibility: visible;"></i>
+					</button>
+				</div>
+			</div>
+			<div id="logo-strip">
+				<img id="logo" src="./img/cityofgainesville.png" width="12%">
+				<p id="temperature"></p>
+				<p id="time"></p>
+				<p id="date"></p>
+				
+
+			</div>
+		</div>
+
+		<!-- homepage -->
+		<div id="homepage" style="display: none">
+			<div id="alert-home">
+				School is closed
+    		</div>
+    		<div id="logo-strip-home">
+				<img id="logo" src="./img/cityofgainesvillecolor.png" width="12%">
+				<p id="temperature-home"></p>
+				<p id="time-home"></p>
+				<p id="date-home"></p>
+			</div>
+			<div class="outer-container">
+				<div id="navigation">
+					
+
+				</div>
+				<div id="body">
+					<div id="calendar" class="btn-group" role="group" style="display:none">
+						<button id="meetings" class="calendar-tabs btn btn-secondary">City Meetings</button>
+						<button id="events" class="calendar-tabs btn btn-secondary">Events in Gainesville</button>
+					</div>
+					<div id="iframe-div">
+						<p id="not-available" style="display: none; color: #007bff">Coming soon!</p>
+						<div id='spinner' style="display: none"><i class='fa fa-spinner fa-spin fa-3x fa-fw'></i><br><br>Loading...</div>
+				  		<iframe id="iframe" src=""></iframe>
+				  	</div>
+		  		</div>
+		  	</div>
+		  	<div id="service-survey">
+		  		<button id="service-survey-button">
+		  			Tell us how our service was today!
+		  		</button>
+		  	</div>
+
+		</div>
+
+
+		<!-- city score card -->
+		<div id="city-score-card" style="display:none">
+			<button id="back">
+				<i class="fal fa-arrow-left" style="display: block; color: #eee; font-size: 50px; visibility: visible;"></i>
+			</button>
+			<div id='spinner2'><i class='fa fa-spinner fa-spin fa-3x fa-fw'></i><br><br>Loading...</div>
+			<iframe id="iframe-scorecard" src=""> </iframe>
+		</div>
+	</main>
+	<script src="./main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

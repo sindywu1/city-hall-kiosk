@@ -1,0 +1,380 @@
+body {
+	background-image: linear-gradient(to bottom, rgba(103,108,200,.76), rgba(29,194,174,.76)), url('./img/background.png');
+	font-family: 'Noto Sans', sans-serif !important;
+	background-size: cover;
+	margin: 0px;
+	padding: 0px;
+	color: white;
+}
+
+#screensaver {
+	background-image: linear-gradient(to bottom, rgba(51,51,51,.43),rgba(51,51,51,.43));
+	width: 100%;
+	height: 100vh;
+	color: white;
+	font-weight: 300;
+}
+
+#homepage {
+	color:black;
+}
+
+#alert {
+	padding: 2% 2%;
+	font-weight: 400;
+	font-size: 120%;
+	line-height: 175%;
+}
+
+#logo-strip p {
+	display: inline-block;
+	float: right;
+	font-size: 120%; 
+	margin-top: 2rem !important;
+	margin-right:2% !important;
+}
+
+h1 {
+	text-align: center;
+	font-size: 3em !important;
+	margin-top: 3% !important;
+	font-weight: 300 !important;
+	margin-bottom: 2% !important;
+
+}
+
+.outer-container {
+	//margin-top: 60px;
+	width: 100%;
+	//height: 480px;
+	text-align: center;
+	display: flex;
+	//background-color: #DCDEE0;
+}
+
+#homepage .outer-container {
+	border: 1px solid #c6cace;
+}
+
+.container {
+	width: 85% !important;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.tile {
+	width: 22%;
+	float: left;
+	height: calc(100vh /3);
+	display: inline-block;
+	background-color: #ffffff;
+	//border: 2px solid #c1c1c1;
+	//box-shadow: 2px 2px 3px #17171738;
+    //width: 100%;
+    //border-radius: 4px;
+    margin: 2rem 1rem;
+    //margin-top: 1rem;
+}
+
+.button-text {
+	width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    //display: flex;
+    justify-content: center;
+    align-items: center;
+    border-image: none;
+    font-size: 1.5em;
+    //color: #171717c7;
+    //color:#24c0c3;
+    color: black;
+}
+
+button {
+	cursor: pointer;
+	display: block;
+}
+
+.link:hover { 
+  background-color: #edeff0 !important;
+}
+
+button:active {
+  background-color: #bbbbbb;
+  outline: none;
+}
+
+button:focus {
+	outline: none !important;
+}
+
+#back {
+	visibility: hidden;
+	position: absolute;
+}
+
+#prev {
+  width: fit-content;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  //margin-left: 10px;
+}
+
+#next {
+  width: fit-content;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  //margin-left: 10px;
+}
+
+#button-container-left{
+	float: left;
+	margin-left: 5%;
+}
+
+#button-container-right{
+	float: right;
+	margin-right: 5%;
+}
+
+.button-container {
+  //position: absolute;
+  //width: 3%;
+  display: inline-block;
+  //margin-top: 200px;
+
+}
+
+#logo-strip {
+	width: 100%;
+	position: fixed;
+    bottom: 0px;
+    padding: 2% 2%;
+    font-weight: 400;
+}
+
+#logo {
+
+}
+
+i {
+	color: black;
+}
+
+svg {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+#navigation {
+	width: 23%;
+    float: left;
+    border-top: 1px solid #DCDEE0;
+    border-right: 1px solid #DCDEE0;
+    font-size: 300;
+}
+
+#service-survey {
+	width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    //margin-top: 2%;
+}
+
+.nav-item button {
+	height: 100%;
+	border: none;
+	text-align: center;
+	width: 100%;
+	font-size: 1em;
+	position:relative;
+	background-color: white;
+	//z-index: 0;
+	//padding: 6% //Change so that it adjusts to different # of nav-items
+}
+
+.nav-item {
+	border-bottom: 1px solid #DCDEE0;
+	//height: calc(100%/7); //Change later
+}
+
+.nav-item button:before, .nav-item button:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 50%;
+	background: white;
+	z-index: -1;
+}
+
+.nav-item button:before {
+	top: 0;
+	transform: skewX(-45deg);
+	transform-origin: bottom left; 
+}
+
+.nav-item button:after {
+	top: 50%;
+	transform: skewX(45deg);
+	transform-origin: top left; 
+}
+
+.nav-item button:hover::before, .nav-item button:hover::after {
+	background-color: #edeff0 !important;
+}
+
+iframe{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	border: none;
+}
+
+#spinner2 {
+	//height: 100%;
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 50%;
+  	transform: translateY(-50%);
+}
+
+#spinner{
+	//height: 100%;
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 50%;
+  	transform: translateY(-50%);
+}
+
+#iframe-div {
+	width: 97%;
+	height: 93%;
+    margin: 0% auto;
+    border: 1px solid #a9aeb1;
+}
+
+#not-available {
+	position: relative;
+	font-size: 2rem;
+	top: 50%;
+  	transform: translateY(-50%);
+}
+
+#alert-home {
+	padding: 1% 2%;
+	background-color: #FEE685;
+	font-weight: 400;
+	font-size: 100%;
+}
+
+#logo-strip-home {
+	width: 100%;
+	padding: 1% 2%;
+}
+
+#service-survey-button {
+	font-size: 1em;
+    padding: 5% 12%;
+    width: max-content;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: #074B69;
+    box-shadow: 1px 2px 3px #0000006e;
+}
+
+.arrow-left {
+	width: 0;
+	height: 0;
+	float: right;
+	border-top: 2em solid transparent;
+	border-bottom: 2em solid transparent;
+	border-right: 2em solid green;
+}
+
+#city-score-card {
+  //display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  //padding-top: 30px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: white; /* Black w/ opacity */
+}
+
+#iframe-scorecard {
+	margin-left: 5%;
+	margin-right: 5%;
+	width: 90%;
+	height: 90%;
+	border: none;
+}
+
+#body {
+	width: 100%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding: 1% auto;
+}
+
+#calendar {
+	padding: 0% 1.5%;
+	width: 100%;
+}
+
+.calendar-tabs {
+	display: inline-block !important;
+    width: 50%;
+    font-size: .85em;
+    padding: 1%;
+    background-color: white;
+    float:left;
+    border: none;
+}
+
+#meetings {
+	//border: 1px solid #c6cace;
+	//background-color: #3d4551;
+	border-radius: 0 !important;
+}
+
+#events {
+	border-radius: 0 !important;
+}
+
+.text {
+	color:black;
+}
+
+.tile button {
+	font-size: 1.5em !important;
+	font-weight: 300 !important;
+}
+
+strong {
+	font-weight: bold !important;
+}
+
+#logo-strip-home p {
+	display: inline-block;
+    float: right;
+    font-size: 100%;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    margin-right: 2% !important;
+}
