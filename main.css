@@ -112,6 +112,8 @@ button:focus {
 #back {
 	visibility: hidden;
 	position: absolute;
+	margin: 2% 2%;
+    z-index: 1050;
 }
 
 #prev {
