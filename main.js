@@ -1,7 +1,7 @@
-var navItemOrder = ["Tell us how our service was today!", "Calendar", "Map of City Services", "Share your thoughts with the City!", "Legislative Topic Materials", "Public Service Requests", "Greater Gainesville Resource Finder", "Pop Up Learning Lab"];
-var urlSourcesOrder = ["https://cityofgainesville.iad1.qualtrics.com/jfe/form/SV_9HU92QJRx9RawE5", "https://gainesville.legistar.com/Calendar.aspx", "http://gainesvillefl.maps.arcgis.com/apps/Shortlist/index.html?appid=86cc9453c2394853aaa78d3486294991", "https://www.jotform.com/form/92516048557160", "https://gainesville.legistar.com/Calendar.aspx", "N/a", "N/a", "N/a"];
+var navItemOrder = ["Tell us how our service was today!", "Calendar", "Map of City Facilities", "Share your thoughts with us!", "Legislative Topic Materials", "statGNV", "Public Service Requests", "myGNV Resource Finder", "Pop Up Learning Lab"];
+var urlSourcesOrder = ["https://cityofgainesville.iad1.qualtrics.com/jfe/form/SV_9HU92QJRx9RawE5", "https://gainesville.legistar.com/Calendar.aspx", "http://gainesvillefl.maps.arcgis.com/apps/Shortlist/index.html?appid=86cc9453c2394853aaa78d3486294991", "https://www.jotform.com/form/92516048557160", "https://gainesville.legistar.com/Legislation.aspx", "https://stat.cityofgainesville.org/","N/a", "N/a", "N/a"];
 var calendarSources = ["https://gainesville.legistar.com/Calendar.aspx", "https://www.cityofgainesville.org/Calendar"];
-var icons = ["fal fa-hand-holding", "fal fa-calendar-alt", "fal fa-map-marked-alt", "fal fa-comments", "fal fa-file-alt", "fal fa-digging", "N/a", "N/a"];
+var icons = ["true", "fal fa-calendar-alt", "fal fa-map-marked-alt", "fal fa-comments", "fal fa-file-alt", "fal fa-chart-line", "fal fa-digging", "N/a", "N/a"];
 
 var iterator = 0;
 
@@ -30,14 +30,21 @@ function checkIfNaIcon(index, iconNum) {
 	if(icons[index] == "N/a"){
 		document.getElementById("p" + iconNum).style.display = "";
 	}
+	else if(icons[index] == "true"){
+		document.getElementById("p" + iconNum).style.display = "none";
+		var icon = document.createElement('img');
+		icon.className = "survey";
+		icon.id = "icon" + iconNum;
+		icon.src = "img/hand-holding-user-light.svg";
+		//icon.style = "display: block; font-size: 4em; margin: 10px;";
+		document.getElementById("text" + iconNum).parentNode.insertBefore(icon, document.getElementById("text" + iconNum));
+	}
 	else{
 		document.getElementById("p" + iconNum).style.display = "none";
 		var icon = document.createElement('i');
 		icon.className = icons[index];
 		icon.id = "icon" + iconNum;
 		icon.style = "display: block; font-size: 4em; margin: 10px;";
-		console.log("text" + iconNum);
-		console.log(document.getElementById("text" + iconNum));
 		document.getElementById("text" + iconNum).parentNode.insertBefore(icon, document.getElementById("text" + iconNum));
 	}
 
@@ -45,13 +52,11 @@ function checkIfNaIcon(index, iconNum) {
 
 function checkIfNa(index) {
 	if(urlSourcesOrder[index] != "N/a"){
-		console.log('sd');
 		iframe.src = urlSourcesOrder[index];
 		showSpinnerWhileIFrameLoads();
 		document.getElementById("not-available").style.display='none';
 	}
 	else {
-		console.log('s');
 		document.getElementById("not-available").style.display='';
 		iframe.style["display"] = "none";
 	}
@@ -183,6 +188,7 @@ window.onload = function() {
 	getTime();
 	getDate();
 	var navItem;
+	var caret;
 	var nav = document.getElementById("navigation");
 	for(var i = 1; i < navItemOrder.length; i++){
 		navItem = document.createElement('div');
@@ -194,9 +200,6 @@ window.onload = function() {
 		link.className = "link";
 		link.style["padding"] = "calc(100%/" + (10*(navItemOrder.length-1)/7) + ")";
 		link.id = i;
-		//var arrow = document.createElement('div');
-		//arrow.className = "arrow-left";
-		//navItem.appendChild(arrow);
 		navItem.appendChild(link);
 		nav.appendChild(navItem);
 	}
@@ -220,10 +223,12 @@ window.onload = function() {
 			}
 			checkIfNa(this.id);
 			document.getElementById(this.id).style["z-index"] = "0";
-			document.getElementById(this.id).style["width"] = "84%";
+			
 			current = this;
 			current.style["color"] = "#074b68";	
 			current.style["font-weight"] = "500";
+			console.log(100 * (1-((document.getElementById(current.id).offsetHeight / 2)/document.getElementById(current.id).offsetWidth)));
+			document.getElementById(current.id).style["width"] = "calc(" + (1-((document.getElementById(current.id).offsetHeight / 2)/document.getElementById(current.id).offsetWidth)) * 100 + "%)";
 		}
 	}
 	
@@ -236,14 +241,17 @@ next.onclick = function(){
 		iterator = iterator + 1;
 	var tiles = document.getElementsByClassName("tile");
 	for(var i = 0; i < 4; i++){
-		console.log("i=" + i);
 		if(iterator+i >= navItemOrder.length){
 			document.getElementById("text" + (i + 1)).innerHTML = navItemOrder[iterator - navItemOrder.length +i];
 			checkIfNaIcon(iterator - navItemOrder.length +i, i+1);
+			if(navItemOrder[iterator - navItemOrder.length +i] == "Pop Up Learning Lab")
+				document.getElementById("text" + (i + 1)).innerHTML = "Pop Up <br> Learning Lab";
 		}
 		else{
 			document.getElementById("text" + (i + 1)).innerHTML = navItemOrder[iterator+i];
 			checkIfNaIcon(iterator+i, i+1);
+			if(navItemOrder[iterator +i] == "Pop Up Learning Lab")
+				document.getElementById("text" + (i + 1)).innerHTML = "Pop Up <br> Learning Lab";
 		}
 	}
 }
@@ -258,10 +266,14 @@ prev.onclick = function(){
 		if(iterator+i >= navItemOrder.length){
 			document.getElementById("text" + (i + 1)).innerHTML = navItemOrder[iterator - navItemOrder.length +i];
 			checkIfNaIcon(iterator - navItemOrder.length +i, i+1);
+			if(navItemOrder[iterator - navItemOrder.length +i] == "Pop Up Learning Lab")
+				document.getElementById("text" + (i + 1)).innerHTML = "Pop Up <br> Learning Lab";
 		}
 		else{
 			document.getElementById("text" + (i + 1)).innerHTML = navItemOrder[iterator+i];
 			checkIfNaIcon(iterator+i, i+1);
+			if(navItemOrder[iterator +i] == "Pop Up Learning Lab")
+				document.getElementById("text" + (i + 1)).innerHTML = "Pop Up <br> Learning Lab";
 		}
 	}
 }
@@ -275,21 +287,28 @@ function home() {
 
 tile1.onclick = function(){
 	iframe.src = urlSourcesOrder[iterator];
+	
+	homepage.style.display = "block";
+	screensaver.style.display = "none";
+	home();
 	if(iterator == 0){
 
 	}
 	else{
 		document.getElementById(iterator).style["z-index"] = "0";
-		document.getElementById(iterator).style["width"] = "84%";
+		//console.log((1-((document.getElementById(iterator).offsetHeight / 2)/document.getElementById(iterator).offsetWidth)) * 100);
+		document.getElementById(iterator).style["width"] = "calc(" + (1-((document.getElementById(iterator).offsetHeight / 2)/document.getElementById(iterator).offsetWidth)) * 100 + "%)";
 	}
-	homepage.style.display = "block";
-	screensaver.style.display = "none";
-	home();
 	current = document.getElementById(iterator);
-	current.style["color"] = "#074b68";	
-	current.style["font-weight"] = "500";
-	current.style
-	if(iterator == "1"){
+	if(current!= null) {
+		current.style["color"] = "#074b68";	
+		current.style["font-weight"] = "500";
+		current.style
+	}
+	if(iterator == 0) {
+		document.getElementById("service-survey-button").click();
+	}
+	else if(iterator == "1"){
 		document.getElementById("calendar").style.display = "";
 		document.getElementById("iframe-div").style["height"] = "93%";
 		document.getElementById("meetings").click();
@@ -307,21 +326,29 @@ tile2.onclick = function(){
 	}
 	else
 		trueIterator = iterator+1;
+	
+	iframe.src = urlSourcesOrder[trueIterator];
+	homepage.style.display = "block";
+	screensaver.style.display = "none";
+	home();
 	if(trueIterator == 0){
 
 	}
 	else{
 		document.getElementById(trueIterator).style["z-index"] = "0";
-		document.getElementById(trueIterator).style["width"] = "84%";
+		console.log((1-((document.getElementById(trueIterator).offsetHeight / 2)/document.getElementById(trueIterator).offsetWidth)) * 100);
+		document.getElementById(trueIterator).style["width"] = "calc(" + (1-((document.getElementById(trueIterator).offsetHeight / 2)/document.getElementById(trueIterator).offsetWidth)) * 100 + "%)";
 	}
-	iframe.src = urlSourcesOrder[trueIterator];
-	homepage.style.display = "block";
-	screensaver.style.display = "none";
-	home();
 	current = document.getElementById(trueIterator);
-	current.style["color"] = "#074b68";	
-	current.style["font-weight"] = "500";
-	if(trueIterator == "1"){
+	if(current != null){
+		current.style["color"] = "#074b68";	
+		current.style["font-weight"] = "500";
+	}
+	
+	if(trueIterator == 0) {
+		document.getElementById("service-survey-button").click();
+	}
+	else if(trueIterator == "1"){
 		document.getElementById("calendar").style.display = "";
 		document.getElementById("iframe-div").style["height"] = "93%";
 		document.getElementById("meetings").click();
@@ -339,21 +366,28 @@ tile3.onclick = function(){
 	}
 	else
 		trueIterator = iterator+2;
+	
+	iframe.src = urlSourcesOrder[trueIterator];
+	homepage.style.display = "block";
+	screensaver.style.display = "none";
+	home();
 	if(trueIterator == 0){
 
 	}
 	else{
 		document.getElementById(trueIterator).style["z-index"] = "0";
-		document.getElementById(trueIterator).style["width"] = "84%";
+		document.getElementById(trueIterator).style["width"] = "calc(" + (1-((document.getElementById(trueIterator).offsetHeight / 2)/document.getElementById(trueIterator).offsetWidth)) * 100 + "%)";
 	}
-	iframe.src = urlSourcesOrder[trueIterator];
-	homepage.style.display = "block";
-	screensaver.style.display = "none";
-	home();
 	current = document.getElementById(trueIterator);
-	current.style["color"] = "#074b68";	
-	current.style["font-weight"] = "500";
-	if(trueIterator == "1"){
+	if(current != null) {
+		current.style["color"] = "#074b68";	
+		current.style["font-weight"] = "500";
+	}
+	
+	if(trueIterator == 0) {
+		document.getElementById("service-survey-button").click();
+	}
+	else if(trueIterator == "1"){
 		document.getElementById("calendar").style.display = "";
 		document.getElementById("iframe-div").style["height"] = "93%";
 		document.getElementById("meetings").click();
@@ -371,21 +405,28 @@ tile4.onclick = function(){
 	}
 	else
 		trueIterator = iterator+3;
+	
+	iframe.src = urlSourcesOrder[trueIterator];
+	homepage.style.display = "block";
+	screensaver.style.display = "none";
+	home();
 	if(trueIterator == 0){
 
 	}
 	else{
 		document.getElementById(trueIterator).style["z-index"] = "0";
-		document.getElementById(trueIterator).style["width"] = "85%";
+		document.getElementById(trueIterator).style["width"] = "calc(" + (1-((document.getElementById(trueIterator).offsetHeight / 2)/document.getElementById(trueIterator).offsetWidth)) * 100 + "%)";
 	}
-	iframe.src = urlSourcesOrder[trueIterator];
-	homepage.style.display = "block";
-	screensaver.style.display = "none";
-	home();
 	current = document.getElementById(trueIterator);
-	current.style["color"] = "#074b68";	
-	current.style["font-weight"] = "500";
-	if(trueIterator == "1"){
+	if(current != null){
+		current.style["color"] = "#074b68";	
+		current.style["font-weight"] = "500";
+	}
+	
+	if(trueIterator == 0) {
+		document.getElementById("service-survey-button").click();
+	}
+	else if(trueIterator == "1"){
 		document.getElementById("calendar").style.display = "";
 		document.getElementById("iframe-div").style["height"] = "93%";
 		document.getElementById("meetings").click();
@@ -404,6 +445,12 @@ document.getElementById("service-survey-button").onclick = function() {
 
 document.getElementById("back").onclick = function() {
 	document.getElementById("city-score-card").style.display ="none";
+	if(current == null){
+		document.getElementById("calendar").style.display = "";
+		document.getElementById("iframe-div").style["height"] = "93%";
+		document.getElementById("meetings").click();
+		current = document.getElementById("1");
+	}
 }
 
 document.getElementById("meetings").onclick = function() {

@@ -56,7 +56,7 @@ h1 {
 	border: 1px solid #c6cace;
 }
 
-.container {
+.container-tile {
 	width: 85% !important;
 	margin-right: auto;
 	margin-left: auto;
@@ -64,7 +64,7 @@ h1 {
 
 .tile {
 	width: 22%;
-	float: left;
+	//float: left;
 	height: calc(100vh /3);
 	display: inline-block;
 	background-color: #ffffff;
@@ -72,7 +72,7 @@ h1 {
 	//box-shadow: 2px 2px 3px #17171738;
     //width: 100%;
     //border-radius: 4px;
-    margin: 2rem 1rem;
+    margin: 3% 1%;
     //margin-top: 1rem;
 }
 
@@ -109,6 +109,15 @@ button:focus {
 	outline: none !important;
 }
 
+.survey {
+	display: block;
+	width: 4.7em;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 #back {
 	visibility: hidden;
 	position: absolute;
@@ -119,29 +128,33 @@ button:focus {
 #prev {
   width: fit-content;
   visibility: hidden;
-  position: absolute;
+  position: relative;
   top: 50%;
   transform: translateY(-50%);
-  //margin-left: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #next {
   width: fit-content;
   visibility: hidden;
-  position: absolute;
+  position: relative;
   top: 50%;
   transform: translateY(-50%);
-  //margin-left: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #button-container-left{
 	float: left;
-	margin-left: 5%;
+	margin-left: 3%;
+
 }
 
 #button-container-right{
 	float: right;
-	margin-right: 5%;
+	margin-right: 3%;
+
 }
 
 .button-container {
@@ -264,6 +277,7 @@ iframe{
 	height: 93%;
     margin: 0% auto;
     border: 1px solid #a9aeb1;
+    background-color: white;
 }
 
 #not-available {
@@ -361,6 +375,9 @@ iframe{
 
 .text {
 	color:black;
+	height: 30%;
+	margin-top: 8%;
+	padding: 4%;
 }
 
 .tile button {
