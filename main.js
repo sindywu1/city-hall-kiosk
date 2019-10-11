@@ -446,10 +446,8 @@ document.getElementById("service-survey-button").onclick = function() {
 document.getElementById("back").onclick = function() {
 	document.getElementById("city-score-card").style.display ="none";
 	if(current == null){
-		document.getElementById("calendar").style.display = "";
-		document.getElementById("iframe-div").style["height"] = "93%";
-		document.getElementById("meetings").click();
 		current = document.getElementById("1");
+		current.click();
 	}
 }
 
