@@ -1,7 +1,7 @@
-var navItemOrder = ["Tell us how our service was today!", "Calendar", "Map of City Facilities", "Share your thoughts with us!", "Legislative Topic Materials", "statGNV", "Public Service Requests", "myGNV Resource Finder", "Pop Up Learning Lab"];
+var navItemOrder = ["Tell us how our service was today!", "Calendar", "Map of City Facilities", "Share your thoughts with us!", "Legislative Topic Materials", "statGNV", "Public Records Requests", "myGNV Resource Finder", "Pop Up Learning Lab"];
 var urlSourcesOrder = ["https://cityofgainesville.iad1.qualtrics.com/jfe/form/SV_9HU92QJRx9RawE5", "https://gainesville.legistar.com/Calendar.aspx", "http://gainesvillefl.maps.arcgis.com/apps/Shortlist/index.html?appid=86cc9453c2394853aaa78d3486294991", "https://www.jotform.com/form/92516048557160", "https://gainesville.legistar.com/Legislation.aspx", "https://stat.cityofgainesville.org/","N/a", "N/a", "N/a"];
 var calendarSources = ["https://gainesville.legistar.com/Calendar.aspx", "https://www.cityofgainesville.org/Calendar"];
-var icons = ["true", "fal fa-calendar-alt", "fal fa-map-marked-alt", "fal fa-comments", "fal fa-file-alt", "fal fa-chart-line", "fal fa-digging", "N/a", "N/a"];
+var icons = ["true", "fal fa-calendar-alt", "fal fa-map-marked-alt", "fal fa-comments", "fal fa-file-alt", "fal fa-chart-line", "fal fa-folder-open", "N/a", "N/a"];
 
 var iterator = 0;
 
